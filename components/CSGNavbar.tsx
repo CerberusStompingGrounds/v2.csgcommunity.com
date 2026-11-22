@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { HoverPrefetchLink as Link } from "@/components/HoverPrefetchLink";
 import { usePathname } from "next/navigation";
+import type { Route } from "next";
 import {
   AtSign,
   CircleHelp,
@@ -29,7 +30,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-const routes = [
+const routes: { href: Route; name: string; icon: typeof House }[] = [
   { href: "/", name: "Home", icon: House },
   { href: "/servers", name: "Servers", icon: Server },
   { href: "/rules", name: "Rules", icon: Scale },

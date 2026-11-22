@@ -47,10 +47,16 @@ export const CSGVideo = ({
   const showVideo = useSyncExternalStore(subscribe, canPlayVideo, () => false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Pause while the tab is hidden, to save CPU/battery.
+  // The video is inserted client-side after hydration, where the autoPlay
+  // attribute isn't reliably honoured, so start it explicitly. Also pause
+  // while the tab is hidden, to save CPU/battery.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Autoplay policies require muted; React sets it as a property only.
+    video.muted = true;
+    video.defaultMuted = true;
 
     const sync = () => {
       if (document.visibilityState === "visible") {
@@ -60,6 +66,7 @@ export const CSGVideo = ({
       }
     };
 
+    sync();
     document.addEventListener("visibilitychange", sync);
     return () => document.removeEventListener("visibilitychange", sync);
   }, [showVideo]);
