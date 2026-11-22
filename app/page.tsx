@@ -27,6 +27,8 @@ export default function Home() {
               src="logo-large.png"
               width="720"
               height="487"
+              loading="eager"
+              fetchPriority="high"
               className=""
               style={{ marginLeft: "auto", marginRight: "auto" }}
             />

@@ -43,7 +43,7 @@ export default function About() {
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           ARMA 2 Communities:
         </h3>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>DefG Wasteland</li>
           <li>Stalk & Strike Wasteland</li>
           <li>OP4 Wasteland</li>
@@ -57,7 +57,7 @@ export default function About() {
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           ARMA 3 Communities:
         </h3>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>DMM Patrol Ops</li>
           <li>Spearhead Exile/ Milsim</li>
           <li>TAC BF Milsim</li>
@@ -70,7 +70,7 @@ export default function About() {
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           DayZ Standalone Communities:
         </h3>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>ADK DayZ</li>
           <li>TW</li>
           <li>DAYZ Usonia</li>
@@ -82,7 +82,7 @@ export default function About() {
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           Head Admins:
         </h3>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>Bubba</li>
           <li>Jstrow</li>
           <li>Spartan</li>
@@ -91,7 +91,7 @@ export default function About() {
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           Community Manager:
         </h3>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>iiBetrayforAR</li>
         </ul>
       </div>

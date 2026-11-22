@@ -12,7 +12,7 @@ export default function Servers() {
         <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
           Features
         </h2>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>1st level of puns: 5 gold coins</li>
           <li>2nd level of jokes: 10 gold coins</li>
           <li>3rd level of one-liners : 20 gold coins</li>
@@ -41,7 +41,7 @@ export default function Servers() {
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           Server Specs
         </h3>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>Intel Xeon E3-1270v6 - 4 cores/8 threads at 3.8Ghz</li>
           <li>32 Gb DDR4 ECC 2400Mhz RAM</li>
           <li>
@@ -137,7 +137,7 @@ export default function Servers() {
         <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
           The custom military bases are:
         </h4>
-        <ul className="list-disc">
+        <ul className="list-disc marker:text-[var(--orange)]">
           <li>Airbase Tent City (North West Airfield)</li>
           <li>Strelok Airbase (North East Airfield)</li>
           <li>Balota Airfield Field Treatment Area</li>
