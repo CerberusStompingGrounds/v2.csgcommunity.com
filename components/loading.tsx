@@ -3,5 +3,10 @@
 import { Spinner } from "./ui/spinner";
 
 export const Loading = () => {
-  return <Spinner size="large">Loading...</Spinner>;
+  return (
+    <span className="flex flex-col items-center justify-center">
+      <Spinner className="size-12 text-primary" />
+      Loading...
+    </span>
+  );
 };
