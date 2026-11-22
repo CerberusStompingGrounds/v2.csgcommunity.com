@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# csgcommunity.com
 
-## Getting Started
+Website for **Cerberus Stomping Grounds (CSG)**, a custom ARMA 3 Exile server on Chernarus Isles with custom traders, missions, locations and loot.
 
-First, run the development server:
+Live at **[csgcommunity.com](https://csgcommunity.com)**.
+
+It's a fully static site built with [Next.js](https://nextjs.org) (App Router, static export), [Tailwind CSS v4](https://tailwindcss.com) and [shadcn/ui](https://ui.shadcn.com) components, hosted on Cloudflare Pages.
+
+## Getting started
+
+Requirements: Node.js 20.9 or newer, and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open <https://localhost:3000>. The dev server uses `--experimental-https`, so the first run creates a local certificate and your browser may ask you to trust it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command         | What it does                                                 |
+| --------------- | ------------------------------------------------------------ |
+| `npm run dev`   | Dev server with hot reload (Turbopack)                       |
+| `npm run build` | Production build, exported as static files to `out/`         |
+| `npm run start` | Not used: a static export has no Node server. Serve `out/` instead |
+| `npm run lint`  | ESLint with the Next.js core-web-vitals and TypeScript rules |
 
-## Learn More
+To preview a production build locally:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npx serve out
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Some behaviour, such as link prefetching, only happens in production builds, so check performance work this way rather than in `next dev`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+```
+app/                 Routes (one folder per page) plus site-wide metadata
+  layout.tsx         Root layout: navbar, footer, font, default <head> metadata
+  page.tsx           Home page (intro video and logo)
+  servers/ rules/ about/ faq/ contact/
+  sitemap.ts robots.ts manifest.ts opengraph-image.png
+components/
+  CSGNavbar.tsx      Desktop nav plus mobile slide-out menu
+  CSGVideo.tsx       Hero video with an image fallback
+  HoverPrefetchLink.tsx  Link that prefetches on hover/focus, not on load
+  typography.tsx     Page, H1–H4, P, List and other text primitives
+  ui/                shadcn/ui components
+lib/media.ts         Builds cache-busted URLs for files in public/media/
+public/
+  media/             Images and video (AVIF / H.264 MP4)
+  arma2/ arma3/      squad.xml and unit patch (.paa) for the in-game squad URL
+  _headers           Cloudflare Pages caching and security headers
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Working on the site
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Adding a page
+
+1. Create `app/<name>/page.tsx` and export `metadata` with a `title`, `description` and `alternates.canonical`.
+2. Add the route to the `routes` array in `components/CSGNavbar.tsx`.
+3. Add the path to `PAGES` in `app/sitemap.ts`.
+
+`typedRoutes` is turned on, so a link to a page that doesn't exist fails the build.
+
+### Media
+
+Put files in `public/media/` and reference them with the `media()` helper (server components only):
+
+```tsx
+import { media } from "@/lib/media";
+
+<Image src={media("map1.avif")} alt="…" width={1920} height={1080} />
+```
+
+`media()` adds a content hash (`/media/map1.avif?v=1a2b3c4d`). That lets `public/_headers` cache everything under `/media/` as immutable for a year, while visitors still get new versions as soon as a file changes.
+
+A static export can't use Next's image optimisation (`images.unoptimized` is on), so compress files before adding them:
+
+- **Images:** AVIF.
+- **Video:** H.264 MP4 with `-movflags +faststart` so playback can start before the download finishes.
+
+For example:
+
+```bash
+ffmpeg -i input.mp4 -c:v libx264 -crf 26 -preset slow -an -movflags +faststart intro.mp4
+```
+
+The hero video only loads on screens 768px and wider, and not when the visitor has reduced motion or data saver turned on. Everyone else sees the still image.
+
+### UI components
+
+New shadcn/ui components go in `components/ui/`:
+
+```bash
+npx shadcn@latest add <component>
+```
+
+## Deployment
+
+Cloudflare Pages builds the site on every push to `main`:
+
+- **Build command:** `npm run build`
+- **Output directory:** `out`
+
+Response headers (HSTS, frame options, cache rules) live in `public/_headers`. Cloudflare merges headers from overlapping rules, so don't add a rule that also matches `/media/*`.
+
+Dependabot opens monthly pull requests for npm updates.
+
+## License
+
+Released into the public domain under [The Unlicense](LICENSE).
