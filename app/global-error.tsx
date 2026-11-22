@@ -1,5 +1,7 @@
 "use client";
 
+import "./globals.css";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -24,7 +26,7 @@ export default function GlobalError({
   reset: () => void;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body>
         <div className="flex min-h-screen flex-col items-center justify-evenly p-24">
           <Card>

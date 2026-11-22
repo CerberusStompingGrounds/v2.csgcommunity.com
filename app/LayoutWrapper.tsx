@@ -22,9 +22,9 @@ export const LayoutWrapper = ({
           defaultTheme="dark"
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-dvh flex-col">
             <CSGNavbar />
-            <main className="w-full flex-1">{children}</main>
+            <main className="flex w-full flex-1 flex-col">{children}</main>
             <footer className="sticky bottom-0 z-50 w-full border-t bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
               <div className="mx-auto flex max-w-screen-2xl items-center justify-center gap-1 px-4 py-4 text-sm orange">
                 <Copyright className="size-4" />

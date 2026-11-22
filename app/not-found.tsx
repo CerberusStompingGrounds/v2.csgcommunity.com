@@ -20,7 +20,7 @@ import {
 
 export default function NotFound() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center flex-1 p-8 pb-20 sm:p-20">
       <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Card>
           <CardHeader>
@@ -34,7 +34,7 @@ export default function NotFound() {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button>
+                  <Button asChild>
                     <Link href="/">Return Home</Link>
                   </Button>
                 </TooltipTrigger>

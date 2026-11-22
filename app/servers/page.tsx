@@ -1,10 +1,8 @@
-"use client";
-
 import Image from "next/image";
 
 export default function Servers() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center flex-1 p-8 pb-20 sm:p-20">
       <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl orange">
           CSG ARMA 3 Exile Chernarus Isles
@@ -52,7 +50,7 @@ export default function Servers() {
         </ul>
         <Image
           alt="CSG Chernarus Isles Klen Trader"
-          src="map1.png"
+          src="/map1.png"
           width="1125"
           height="656"
         />
@@ -79,7 +77,7 @@ export default function Servers() {
         </p>
         <Image
           alt="CSG Chernarus Isles Berezino Camp"
-          src="map2.png"
+          src="/map2.png"
           width="1125"
           height="656"
         />
@@ -113,20 +111,13 @@ export default function Servers() {
         </p>
         <Image
           alt="CSG Chernarus Isles North East Airfield C130 Crash"
-          src="map3.png"
+          src="/map3.png"
           width="1125"
           height="656"
         />
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           Custom Locations
         </h3>
-        <p className="leading-7 not-first:mt-6">
-          Many new military bases, sites, and evac sites have been added for
-          increased military presence and gear. Civilian houses are not chocked
-          full of automatic assault rifles, as is often the case on Exile
-          servers. For this reasons, you must venture out to the higher risk
-          sites to gain higher quality loot.
-        </p>
         <p className="leading-7 not-first:mt-6">
           Many new military bases, sites, and evac sites have been added for
           increased military presence and gear. Civilian houses are not chocked
