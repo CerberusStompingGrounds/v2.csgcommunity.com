@@ -11,12 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 export default function GlobalError({
   error,
@@ -38,16 +32,7 @@ export default function GlobalError({
             </CardHeader>
             <CardContent>{error.message}</CardContent>
             <CardFooter className="flex justify-evenly">
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button onClick={() => reset()}>Try again</Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Something went wrong, try again!</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Button onClick={() => reset()}>Try again</Button>
             </CardFooter>
           </Card>
         </div>

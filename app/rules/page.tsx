@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { H1, H2, List, P, Page } from "@/components/typography";
 const sections = [
   {
     title: "General",
@@ -28,34 +30,38 @@ const sections = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: "Rules",
+  description: "The server rules for CSG Chernarus Isles, covering bases, traders and conduct.",
+  alternates: { canonical: "/rules" },
+};
+
 export default function Rules() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center flex-1 p-8 pb-20 sm:p-20">
-      <div className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl orange">
-          Rules - CSG Chernarus Isles
-        </h1>
-        <p className="leading-7 not-first:mt-6">
-          To keep the server enjoyable for all we have concise and easy to
-          follow rules. Paired with a strict policy of all rule breaking,
-          repeated violations will result in escalation to further temporary
-          bans or permanent bans if high severity. A ban results in the
-          prevention of joining all of our servers for a given time, this
-          including TeamSpeak if necessary.
-        </p>
-        {sections.map((section) => (
-          <section key={section.title} className="w-full">
-            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight">
-              {section.title}
-            </h2>
-            <ul className="my-6 ml-6 list-disc leading-7 marker:text-[var(--orange)] [&>li]:mt-2">
-              {section.rules.map((rule) => (
-                <li key={rule}>{rule}</li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
-    </div>
+    <Page>
+      <H1>
+        Rules - CSG Chernarus Isles
+      </H1>
+      <P>
+        To keep the server enjoyable for all we have concise and easy to
+        follow rules. Paired with a strict policy of all rule breaking,
+        repeated violations will result in escalation to further temporary
+        bans or permanent bans if high severity. A ban results in the
+        prevention of joining all of our servers for a given time, this
+        including TeamSpeak if necessary.
+      </P>
+      {sections.map((section) => (
+        <section key={section.title} className="w-full">
+          <H2>
+            {section.title}
+          </H2>
+          <List className="my-6 ml-6 leading-7 [&>li]:mt-2">
+            {section.rules.map((rule) => (
+              <li key={rule}>{rule}</li>
+            ))}
+          </List>
+        </section>
+      ))}
+    </Page>
   );
 }

@@ -1,5 +1,10 @@
 import { CSGVideo } from "@/components/CSGVideo";
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
