@@ -9,11 +9,14 @@
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Un-fingerprinted media: cache for a week, serve stale while revalidating
-/*.mp4
-  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
-/*.jpg
-  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+# Media is referenced via lib/media.ts as /media/<name>?v=<content hash>, so
+# the URL changes whenever the file does and it's safe to cache for a year.
+/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Un-fingerprinted media: cache for a week, serve stale while revalidating.
+# Don't add rules here that match files under /media/ — Cloudflare joins
+# duplicate headers from overlapping rules.
 /*.png
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 /*.ico

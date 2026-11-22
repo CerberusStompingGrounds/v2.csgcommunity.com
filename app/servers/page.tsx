@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { H1, H2, H3, H4, List, P, Page } from "@/components/typography";
 import Image from "next/image";
+import { media } from "@/lib/media";
 
 export const metadata: Metadata = {
   title: "Servers",
@@ -57,7 +58,7 @@ export default function Servers() {
       </List>
       <Image
         alt="CSG Chernarus Isles Klen Trader"
-        src="/map1.png"
+        src={media("map1.avif")}
         width="1125"
         height="656"
       />
@@ -84,9 +85,9 @@ export default function Servers() {
       </P>
       <Image
         alt="CSG Chernarus Isles Berezino Camp"
-        src="/map2.png"
+        src={media("map2.avif")}
         width="1125"
-        height="656"
+        height="593"
       />
       <P>
         Each trader has been built with a backstory in mind.
@@ -118,9 +119,9 @@ export default function Servers() {
       </P>
       <Image
         alt="CSG Chernarus Isles North East Airfield C130 Crash"
-        src="/map3.png"
+        src={media("map3.avif")}
         width="1125"
-        height="656"
+        height="593"
       />
       <H3>
         Custom Locations

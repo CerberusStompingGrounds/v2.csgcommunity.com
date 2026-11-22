@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { cn } from "cn";
 
@@ -45,6 +45,24 @@ export const CSGVideo = ({
 }: Readonly<CSGVideoProps>) => {
   // Server render (static export) has no window, so start with the image only.
   const showVideo = useSyncExternalStore(subscribe, canPlayVideo, () => false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Pause while the tab is hidden, to save CPU/battery.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const sync = () => {
+      if (document.visibilityState === "visible") {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    };
+
+    document.addEventListener("visibilitychange", sync);
+    return () => document.removeEventListener("visibilitychange", sync);
+  }, [showVideo]);
 
   return (
     <>
@@ -58,6 +76,7 @@ export const CSGVideo = ({
       />
       {showVideo && (
         <video
+          ref={videoRef}
           loop
           autoPlay
           playsInline
