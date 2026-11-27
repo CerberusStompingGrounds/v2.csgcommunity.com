@@ -79,6 +79,7 @@ export const CSGVideo = ({
         fill
         sizes="100vw"
         loading="eager"
+        fetchPriority="high"
         className={cn("object-cover", className)}
       />
       {showVideo && (

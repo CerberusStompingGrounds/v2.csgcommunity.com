@@ -6,7 +6,6 @@ const PAGES = ["", "/servers", "/rules", "/about", "/faq", "/contact"];
 export default function sitemap(): MetadataRoute.Sitemap {
   return PAGES.map((path) => ({
     url: `${BASE_URL}${path}`,
-    lastModified: new Date(),
     changeFrequency: "yearly",
     priority: path === "" ? 1 : 0.8,
   }));

@@ -1,0 +1,2 @@
+# Check out text files with CRLF line endings (stored as LF in the repo).
+* text=auto eol=crlf

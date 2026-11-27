@@ -1,3 +1,4 @@
+import { pageMeta } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { H1, H2, H3, H4, List, P, Page } from "@/components/typography";
 import Image from "next/image";
@@ -6,7 +7,7 @@ import { media } from "@/lib/media";
 export const metadata: Metadata = {
   title: "Servers",
   description: "Features, specs and custom map locations of the CSG ARMA 3 Exile Chernarus Isles server.",
-  alternates: { canonical: "/servers" },
+  ...pageMeta("/servers"),
 };
 
 export default function Servers() {
@@ -61,6 +62,7 @@ export default function Servers() {
         src={media("map1.avif")}
         width="1125"
         height="656"
+        sizes="(max-width: 1125px) 100vw, 1125px"
       />
       <P>
         Many hours of work have been put towards giving the traders a
@@ -88,6 +90,7 @@ export default function Servers() {
         src={media("map2.avif")}
         width="1125"
         height="593"
+        sizes="(max-width: 1125px) 100vw, 1125px"
       />
       <P>
         Each trader has been built with a backstory in mind.
@@ -122,6 +125,7 @@ export default function Servers() {
         src={media("map3.avif")}
         width="1125"
         height="593"
+        sizes="(max-width: 1125px) 100vw, 1125px"
       />
       <H3>
         Custom Locations

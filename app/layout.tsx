@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { Copyright } from "lucide-react";
 import { CSGNavbar } from "@/components/CSGNavbar";
+import { inter } from "@/lib/fonts";
+import { siteOpenGraph } from "@/lib/metadata";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://csgcommunity.com"),
@@ -15,12 +14,7 @@ export const metadata: Metadata = {
   description:
     "Cerberus Stomping Grounds — a custom ARMA 3 Exile server on Chernarus Isles with custom traders, missions, locations and loot.",
   authors: { url: "https://jallison.co.uk", name: "Danny Dorito" },
-  openGraph: {
-    type: "website",
-    siteName: "CSG Exile",
-    locale: "en_GB",
-    url: "/",
-  },
+  openGraph: siteOpenGraph,
   twitter: {
     card: "summary_large_image",
     site: "@csg_exile",

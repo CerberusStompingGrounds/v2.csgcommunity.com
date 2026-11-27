@@ -1,10 +1,11 @@
+import { pageMeta } from "@/lib/metadata";
 import { CSGVideo } from "@/components/CSGVideo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { media } from "@/lib/media";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  ...pageMeta("/"),
 };
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
           src={media("logo-large.avif")}
           width="720"
           height="487"
+          sizes="(max-width: 752px) calc(100vw - 32px), 720px"
           loading="eager"
           fetchPriority="high"
           className="mx-auto"

@@ -1,3 +1,4 @@
+import { pageMeta } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { H1, H2, List, P, Page } from "@/components/typography";
 const sections = [
@@ -33,7 +34,7 @@ const sections = [
 export const metadata: Metadata = {
   title: "Rules",
   description: "The server rules for CSG Chernarus Isles, covering bases, traders and conduct.",
-  alternates: { canonical: "/rules" },
+  ...pageMeta("/rules"),
 };
 
 export default function Rules() {

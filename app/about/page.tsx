@@ -1,9 +1,10 @@
+import { pageMeta } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { H1, H2, H3, List, P, Page } from "@/components/typography";
 export const metadata: Metadata = {
   title: "About Us",
   description: "How the Cerberus Stomping Grounds community formed, the servers we've played on, and our staff team.",
-  alternates: { canonical: "/about" },
+  ...pageMeta("/about"),
 };
 
 export default function About() {

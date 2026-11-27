@@ -1,6 +1,7 @@
 "use client";
 
 import "./globals.css";
+import { inter } from "@/lib/fonts";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,8 +21,8 @@ export default function GlobalError({
   reset: () => void;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body>
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
+      <body className={inter.className}>
         <div className="flex min-h-screen flex-col items-center justify-evenly p-24">
           <Card>
             <CardHeader>

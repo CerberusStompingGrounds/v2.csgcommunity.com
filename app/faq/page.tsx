@@ -1,9 +1,10 @@
+import { pageMeta } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { H1, H2, P, Page } from "@/components/typography";
 export const metadata: Metadata = {
   title: "FAQ",
   description: "Answers to common questions about playing on the CSG Exile server.",
-  alternates: { canonical: "/faq" },
+  ...pageMeta("/faq"),
 };
 
 export default function FAQ() {
